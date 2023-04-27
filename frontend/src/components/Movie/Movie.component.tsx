@@ -5,7 +5,11 @@ import { MovieResponse } from '../../api/types';
 import * as S from './Movies.style';
 import { LikeDislikeIcon } from '../LikeDislikeIcon';
 import { useDispatch } from 'react-redux';
-import { dislikeMovie, likeMovie } from '../../redux-store/movies/movies.slice';
+import {
+  deleteMovie,
+  dislikeMovie,
+  likeMovie,
+} from '../../redux-store/movies/movies.slice';
 
 interface MovieProps {
   movie: MovieResponse;
@@ -16,6 +20,11 @@ export const Movie: React.FC<MovieProps> = ({ movie }) => {
   const likesRatio = movie.likes / (movie.likes + movie.dislikes);
   return (
     <S.MovieCard>
+      <S.DeleteButton
+        onClick={() => dispatch(deleteMovie({ movieId: movie.id }))}
+      >
+        delete
+      </S.DeleteButton>
       <S.MovieTitle area='title'>{movie.title}</S.MovieTitle>
       <S.MovieCardArea area='category'>{movie.category}</S.MovieCardArea>
       <S.MovieLikesRatio area='ratio'>

@@ -19,6 +19,7 @@ export const MovieLikesRatio = styled(MovieCardArea)`
 `;
 
 export const MovieCard = styled.div`
+  position: relative;
   width: 300px;
   height: 300px;
   background: blue;
@@ -29,4 +30,10 @@ export const MovieCard = styled.div`
   grid-template-areas:
     'title ratio'
     'category ratio';
+`;
+
+export const DeleteButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
 `;

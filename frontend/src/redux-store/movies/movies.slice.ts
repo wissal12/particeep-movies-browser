@@ -27,9 +27,15 @@ export const moviesSlice = createSlice({
         movie.dislikes++;
       }
     },
+    deleteMovie: (state, action: PayloadAction<{ movieId: string }>) => {
+      state.movies = state.movies.filter(
+        (movie) => movie.id !== action.payload.movieId,
+      );
+    },
   },
 });
 
-export const { setMovies, likeMovie, dislikeMovie } = moviesSlice.actions;
+export const { setMovies, likeMovie, dislikeMovie, deleteMovie } =
+  moviesSlice.actions;
 
 export default moviesSlice.reducer;

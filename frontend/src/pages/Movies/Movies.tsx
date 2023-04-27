@@ -7,6 +7,7 @@ import { MultipleSelect } from '../../components/MultiSelect';
 import { useDispatch } from 'react-redux';
 import { filterMoviesByCategories } from '../../redux-store/movies/movies.slice';
 import { Paginator } from '../../components/Paginatior';
+import { CircularProgress } from '@mui/material';
 
 export const Movies: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const Movies: React.FC = () => {
   );
   const moviesCategories = [...new Set(moviesCategoriesWithDuplicates)];
 
-  if (loadingMovies) return <>loading...</>;
+  if (loadingMovies) return <CircularProgress />;
   return (
     <>
       <MultipleSelect

@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { MovieResponse } from '../../api/types';
 
-const initialState: { movies: MovieResponse[] } = {
+const initialState: { movies: MovieResponse[]; allMovies: MovieResponse[] } = {
   movies: [],
+  allMovies: [],
 };
 export const moviesSlice = createSlice({
   name: 'movies',
@@ -10,6 +11,7 @@ export const moviesSlice = createSlice({
   reducers: {
     setMovies: (state, action: PayloadAction<{ movies: MovieResponse[] }>) => {
       state.movies = action.payload.movies;
+      state.allMovies = action.payload.movies;
     },
     likeMovie: (state, action: PayloadAction<{ movieId: string }>) => {
       const movie = state.movies.find(
@@ -32,10 +34,23 @@ export const moviesSlice = createSlice({
         (movie) => movie.id !== action.payload.movieId,
       );
     },
+    filterMoviesByCategories: (
+      state,
+      action: PayloadAction<{ catergories: string[] }>,
+    ) => {
+      state.movies = state.allMovies.filter((movie) =>
+        action.payload.catergories.includes(movie.category),
+      );
+    },
   },
 });
 
-export const { setMovies, likeMovie, dislikeMovie, deleteMovie } =
-  moviesSlice.actions;
+export const {
+  setMovies,
+  likeMovie,
+  dislikeMovie,
+  deleteMovie,
+  filterMoviesByCategories,
+} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

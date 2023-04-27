@@ -8,6 +8,9 @@ export const useMovies = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const movies = useSelector((state: RootState) => state.moviesStore.movies);
+  const allMovies = useSelector(
+    (state: RootState) => state.moviesStore.allMovies,
+  );
 
   const loadMovies = useCallback(async () => {
     setLoading(true);
@@ -23,6 +26,7 @@ export const useMovies = () => {
   return {
     loadingMovies: loading,
     movies,
+    allMovies,
     refetch: loadMovies,
   };
 };

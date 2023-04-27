@@ -1,0 +1,26 @@
+repos:
+  - repo: local
+    hooks:
+      - id: style
+        name: style check
+        entry: npx prettier --write
+        files: "frontend/src/.*\\.(tsx?|jsx?)$"
+        language: system
+
+  - repo: local
+    hooks:
+      - id: lint
+        name: lint check
+        entry: npx eslint --fix --max-warnings 0
+        files: "frontend/src/.*\\.(tsx?|jsx?)$"
+        language: system
+
+  - repo: local
+    hooks:
+      - id: tsc
+        name: tsc check
+        entry: bash -c "cd frontend && npm run tsc-check"
+        files: "frontend/src/.*\\.(tsx?|jsx?)$"
+        # can not "tsc-check" only staged files because of https://github.com/microsoft/TypeScript/issues/27379
+        pass_filenames: false
+        language: system

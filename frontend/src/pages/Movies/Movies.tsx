@@ -6,6 +6,7 @@ import * as S from './Movies.styles';
 import { MultipleSelect } from '../../components/MultiSelect';
 import { useDispatch } from 'react-redux';
 import { filterMoviesByCategories } from '../../redux-store/movies/movies.slice';
+import { Paginator } from '../../components/Paginatior';
 
 export const Movies: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,11 +27,13 @@ export const Movies: React.FC = () => {
           dispatch(filterMoviesByCategories({ catergories }))
         }
       />
-      <S.MoviesWrapper>
-        {movies.map((movie) => (
+      <Paginator
+        elements={movies.map((movie) => (
           <Movie key={movie.id} movie={movie} />
         ))}
-      </S.MoviesWrapper>
+        elementsPerPage={6}
+        ElementsWrapper={S.MoviesWrapper}
+      />
     </>
   );
 };

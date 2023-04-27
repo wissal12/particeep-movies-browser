@@ -20,7 +20,7 @@ export const MovieLikesRatio = styled(MovieCardArea)`
 
 export const MovieCard = styled.div`
   position: relative;
-  width: 300px;
+  width: 400px;
   height: 300px;
   background: blue;
   display: grid;

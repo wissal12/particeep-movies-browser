@@ -33,11 +33,18 @@ export const moviesSlice = createSlice({
       state.movies = state.movies.filter(
         (movie) => movie.id !== action.payload.movieId,
       );
+      state.allMovies = state.allMovies.filter(
+        (movie) => movie.id !== action.payload.movieId,
+      );
     },
     filterMoviesByCategories: (
       state,
       action: PayloadAction<{ catergories: string[] }>,
     ) => {
+      if (!action.payload.catergories.length) {
+        state.movies = state.allMovies;
+        return;
+      }
       state.movies = state.allMovies.filter((movie) =>
         action.payload.catergories.includes(movie.category),
       );

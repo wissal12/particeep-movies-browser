@@ -20,7 +20,7 @@ export const Movies: React.FC = () => {
 
   if (loadingMovies) return <CircularProgress />;
   return (
-    <>
+    <S.PageWrapper>
       <MultipleSelect
         title='catergories'
         options={moviesCategories}
@@ -35,6 +35,6 @@ export const Movies: React.FC = () => {
         elementsPerPage={6}
         ElementsWrapper={S.MoviesWrapper}
       />
-    </>
+    </S.PageWrapper>
   );
 };

@@ -25,8 +25,10 @@ export const Movie: React.FC<MovieProps> = ({ movie }) => {
       >
         delete
       </S.DeleteButton>
-      <S.MovieTitle area='title'>{movie.title}</S.MovieTitle>
-      <S.MovieCardArea area='category'>{movie.category}</S.MovieCardArea>
+      <S.MovieTitle area='title'>Title: {movie.title}</S.MovieTitle>
+      <S.MovieCategory area='category'>
+        <b>Category:</b> {movie.category}
+      </S.MovieCategory>
       <S.MovieLikesRatio area='ratio'>
         <GaugeChart animate={false} percent={likesRatio} />
         <div style={{ display: 'flex' }}>

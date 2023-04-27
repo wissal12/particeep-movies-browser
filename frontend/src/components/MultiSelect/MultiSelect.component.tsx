@@ -8,6 +8,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import { Button } from '@mui/material';
 
+import * as S from './MultiSelect.styles';
+import { colorUsage } from '../../stylesheet';
+
 interface MultipleSelectProps {
   title: string;
   options: string[];
@@ -32,7 +35,7 @@ export const MultipleSelect: React.FC<MultipleSelectProps> = ({
   };
 
   return (
-    <div>
+    <S.MultiSelectWrapper>
       <FormControl sx={{ m: 1, width: '500px' }}>
         <InputLabel>{title}</InputLabel>
         <Select
@@ -57,11 +60,11 @@ export const MultipleSelect: React.FC<MultipleSelectProps> = ({
       </FormControl>
       <Button
         variant='contained'
-        color='primary'
+        style={{ backgroundColor: colorUsage.button.submit.background }}
         onClick={() => onSubmit(selectedValues)}
       >
         Submit
       </Button>
-    </div>
+    </S.MultiSelectWrapper>
   );
 };

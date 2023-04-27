@@ -1,12 +1,6 @@
-interface Movie {
-  id: string;
-  title: string;
-  category: string;
-  likes: number;
-  dislikes: number;
-}
+import { MovieResponse } from './types';
 
-const movies: Movie[] = [
+const movies: MovieResponse[] = [
   {
     id: '1',
     title: 'Oceans 8',
@@ -79,6 +73,6 @@ const movies: Movie[] = [
   },
 ];
 
-export const movies$: Promise<Movie[]> = new Promise((resolve, _reject) =>
-  setTimeout(resolve, 100, movies),
+export const movies$: Promise<MovieResponse[]> = new Promise(
+  (resolve, _reject) => setTimeout(resolve, 100, movies),
 );
